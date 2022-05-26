@@ -1,0 +1,43 @@
+---
+title: "Elsevier"
+author: "Prayag Gordy"
+date: "5/25/2022"
+output: pdf_document
+documentclass: elsarticle
+classoption: preprint
+bibliography: references.bib
+nocite: '@*'
+csl: apa.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+```
+
+## Citations
+
+**Keep in mind that all citations in this document are arbitrary.**
+
+There are so many options [@js61]! We can easily cite at the beginning of sentences and with page numbers. @fb94[p.33] wants us to include one additional citation. The information in each citation is easy to change in the `.bib` file, says Foo Bar [-@fb94].
+
+## Plots and tables
+
+Let's include a plot. Quality isn't an issue since it renders with the pdf (for example, zoom in on the axis text—you'll see no reduction in quality):
+
+```{r fig.cap="A simple plot with mtcars"}
+ggplot2::ggplot(mtcars, ggplot2::aes(x = disp, y = mpg)) + ggplot2::geom_point()
+```
+
+And now, for a table:
+
+```{r}
+kableExtra::kable_styling(knitr::kable(mtcars[,c("mpg", "cyl", "disp")], caption = "Nice table!", booktabs = T), latex_options = c("hold_position"))
+```
+
+## Creating the RMD
+
+Creating this RMD is quite simple. Download the CLS from Elsevier and unzip into the project directory. Then, add your `bib`
+and `csl` files into the project directory. Include the `documentclass`, `bibliography`, and `csl` tags in the YAML header, along with optional tags such as `classoption` and `nocite`.
+
+# References
+
